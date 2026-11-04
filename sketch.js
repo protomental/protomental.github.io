@@ -1,7 +1,7 @@
 let theShader;
 
 function setup() {
-  createCanvas(710, 400, WEBGL);
+  createCanvas(deviceWidth/2, 500, WEBGL);
   noStroke();
   angleMode(DEGREES);
   theShader = buildMaterialShader(shaderAsTextureCallback);
