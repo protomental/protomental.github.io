@@ -1,11 +1,11 @@
 let theShader;
 
 function setup() {
-  createCanvas(700, 500, WEBGL);
+  createCanvas(710, 400, WEBGL);
   noStroke();
   angleMode(DEGREES);
   theShader = buildMaterialShader(shaderAsTextureCallback);
-  describe('Sphere broken up into a square grid with a gradient in each grid.');
+  describe("Sphere broken up into a square grid with a gradient in each grid.");
 }
 
 function shaderAsTextureCallback() {
@@ -38,11 +38,14 @@ function shaderAsTextureCallback() {
   const mdist = distance([1, 1], mst);
 
   const st = pixelInputs.texCoord;
-  const distToCenter = distance(st, [sin(millis() / 10000), cos(millis() / 10000)]);
+  const distToCenter = distance(st, [
+    sin(millis() / 10000),
+    cos(millis() / 10000),
+  ]);
   let tiled = tile(st, 10);
-  tiled = rotate2D(tiled, distToCenter / (mdist / 5) * PI * 2);
+  tiled = rotate2D(tiled, (distToCenter / (mdist / 5)) * PI * 2);
 
-  const r = concentricCircles(tiled, [0, 0],  5,  5);
+  const r = concentricCircles(tiled, [0, 0], 5, 5);
   const g = concentricCircles(tiled, [0, 0], 10, 10);
   const b = concentricCircles(tiled, [0, 0], 20, 10);
 
